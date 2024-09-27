@@ -7,9 +7,8 @@ A Todo List application built using the MERN stack (MongoDB, Express, React, Nod
 
 ## Prerequisites
 
-- Node.js
-- npm (Node Package Manager)
-- MongoDB (MongoDB Compass or MongoDB Atlas)
+- Docker
+- Docker Compose
 
 ## Getting Started
 
@@ -18,57 +17,22 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Installation
 
 1. Clone the repository:
+   - Using ssh
+      ```bash
+      git clone git@github.com:antoniocollazo/todo_list_mern.git
+      ```
+   - Using https
+      ```bash
+      git clone https://github.com/antoniocollazo/todo_list_mern.git
+      ```
+2. Execute the docker compose file:
+   ```
+   docker compose up -d
+   ```
+3. Running services:
+   - API Server runs on http://localhost:6001.
+   - Fronted App (Todolist) runs on http://localhost:3001.
 
-   ```bash
-   git clone https://github.com/yourusername/Todo-List-in-Ejs-React-Nodejs-MongoDB-Scss.git
-   ```
-2. Install the dependencies:
-   ```
-   cd todolist
-   ```
-   ```
-   npm install
-   ```
-3. Start the development server:
-   ```
-   npm run dev
-   ```
-4. Install additional dependencies:   
-   ```
-   npm install axios react-icons
-   ```
-5. Set up the server:   
-   ```
-   cd Server
-   ```
-   ```
-   npm init -y
-   ```
-   ```
-   npm install express mongoose cors
-   ```
-6. Install Sass for SCSS support:   
-   ```
-   npm install sass
-   ```
-7. Start the server:
-   ```
-   npm install nodemon
-   ```
-   ```
-   node index.js
-   ```
-8. Set up MongoDB:
-
-- Download and install [MongoDB Compass](https://www.mongodb.com/try/download/community) or set up MongoDB Atlas.
-
-- Ensure MongoDB is running on `mongodb://127.0.0.1:27017/TodoList`.   
-
-## Usage
-- The frontend of the application is served using React.
-- The backend of the application is powered by Node.js and Express.
-- The database uses MongoDB to store todos.
-- SCSS is used for styling.
 
 ## API Endpoints
 - GET /get: Fetch all todos.
@@ -76,50 +40,9 @@ Follow these instructions to get a copy of the project up and running on your lo
 - DELETE /delete/:id: Delete a todo by ID.
 - POST /add: Add a new todo.
 
-## Running the Application
-1. Start the React development server:
-   ```
-   npm run dev
-   ```
-2. Start the Express server:
-   ```
-   cd Server
-   nodemon index.js
-   ```
-3. Open your browser and navigate to http://localhost:3000 to see the Todo List application in action.
-
 ## Built With
 - React - A JavaScript library for building user interfaces.
 - Express - Fast, unopinionated, minimalist web framework for Node.js.
 - Node.js - JavaScript runtime built on Chrome's V8 JavaScript engine.
 - MongoDB - The NoSQL database for modern applications.
 - SCSS - A CSS preprocessor that adds power and elegance to the basic language.
-
-## File Structure
-```
-.
-├── Server
-│   ├── Models
-│   │   └── Todo.js
-│   ├── index.js
-├── public
-│   └── index.html
-├── src
-│   ├── components
-│   │   ├── Create.jsx
-│   │   └── Home.jsx
-│   ├── App.scss
-│   ├── App.jsx
-│   └── main.jsx
-├── package.json
-├── README.md
-└── .gitignore
-```
-
-## Setting Up MongoDB
-1. Download and install [MongoDB Compass](https://www.mongodb.com/try/download/community) or set up a cloud instance using [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database).
-
-2. Ensure MongoDB is running on `mongodb://127.0.0.1:27017/TodoList`.
-
-3. If using MongoDB Compass, create a new database named `TodoList` with a collection named `todos`.
-

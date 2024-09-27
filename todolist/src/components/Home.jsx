@@ -1,33 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Create from './Create';
+import Create from './Create.jsx';
 import { BsFillCheckCircleFill, BsCircleFill, BsFillTrashFill } from 'react-icons/bs';
+
+// const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Home() {
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/get')
+  const handleRefresh = ()=>{
+    axios.get(`${API_URL}/get`)
       .then(result => setTodos(result.data))
       .catch(err => console.log(err));
+  }
+
+  useEffect(() => {
+    handleRefresh();
   }, []);
 
   const handleEdit = (id) => {
-    axios.put('http://localhost:3001/update/' + id)
-      .then(result => location.reload())
+    axios.put(`${API_URL}/update/${id}`)
+      .then(() => handleRefresh())
       .catch(err => console.log(err));
   }
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3001/delete/' + id)
-      .then(result => location.reload())
+    axios.delete(`${API_URL}/delete/${id}`)
+      .then(() => handleRefresh())
       .catch(err => console.log(err));
   }
 
   return (
     <div>
       <h2>Todo List</h2>
-      <Create />
+      <Create handleRefresh={handleRefresh} />
       <br />
       {todos.length === 0
         ? <div><h2>No Record</h2></div>
